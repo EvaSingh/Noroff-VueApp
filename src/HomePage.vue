@@ -1,14 +1,21 @@
 <template>
-    <div class="row">
-        
-    </div>
+        <HomeComponent msg="Welcome to Recipelove!" />
+   
 </template>
 
 <script>
+import HomeComponent from './components/HomeComponent.vue'
+    
 export default {
   name: 'HomePage',
-  props: {
-    msg: String
+  components: {
+      HomeComponent
+  },
+  data() {
+      return {
+          msg: 'welcome'
+      }
+      
   }
 }
 </script>

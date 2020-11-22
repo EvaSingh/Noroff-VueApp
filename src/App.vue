@@ -1,20 +1,18 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <Recipies></Recipies>
-    <HelloWorld></HelloWorld>
+    
+    
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import Recipies from './components/RecipiesComponent.vue';
+//import Recipies from './components/RecipiesComponent.vue';
     
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    Recipies
+    
   }
 }
 </script>

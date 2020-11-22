@@ -1,22 +1,23 @@
 <template>
     <div class="row">
         <div v-for="recipe in recipies" v-bind:key="recipe" class="col-sm-12">
-            <Recipies v-bind:thumbnail="recipe.thumbnail"
-                      v-bind:title="recipe.title"
-                      v-bind:href="recipe.href" 
-                      v-bind:ingredients="recipe.ingredients" 
-            ></Recipies>
-        </div>
-        
+            <RecipiesComponent v-bind:thumbnail="recipe.thumbnail"
+                               v-bind:title="recipe.title"
+                               v-bind:href="recipe.href" 
+                               v-bind:ingredients="recipe.ingredients" 
+            ></RecipiesComponent>
+            <router-view></router-view>
+        </div> 
     </div>
 </template>
 
 <script>
-import Recipies from './components/RecipiesComponent.vue'
+import RecipiesComponent from './components/RecipiesComponent.vue'
+    
 export default {
-    name: 'Recipies',
+    name: 'RecipiesPage',
     components:{
-        Recipies
+        RecipiesComponent
     },
     data(){
         return{
@@ -25,14 +26,16 @@ export default {
     },
     beforeMount: function(){
         const app = this;
-    
-        fetch('http://www.recipepuppy.com/api/')
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(result) {
-            app.recipies = result;
-        })
+        const conversionUrl = 'https://cors-anywhere.herokuapp.com/';
+        const url = 'http://www.recipepuppy.com/api/';
+        
+            fetch(conversionUrl + url)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(results) {
+                app.recipies = results;
+            })
     }   
 }
 </script>
